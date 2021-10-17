@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>{{show.name}}</title>
+  </head>
+  <body>
+      <main>
+        <h1> Search for a show</h1>
+            <form method = "POST" action="/search">
+                <label> Search for shows
+                    <input type="text" name="search" autofocus placeholder="Search for a show"/>
+                </label>
+                <button type="submit">Search</button>
+            </form>
+            <a href="/">Go back to all shows</a>    
+            <a href="/popularsearches">See the most popular searches</a>
+        <h2> {{show.name}} </h2>
+        <img alt="{{show.name}}" src={{show.image.medium}}>
+        <dl>
+            <dt>Language</dt>
+                <dd>{{show.language}}</dd>
+            <dt>Summary</dt>
+                <dd>{{show.summary}}</dd>
+            <dt> Average Rating</dt>
+                <dd>{{show.rating.average}}</dd>
+            <dt>Pilot Data</dt>
+                <dd>{{show.premiered}}</dd>
+            {{#if show.ended}}
+                <dt>End Date</dt>
+                    <dd>{{show.ended}}</dd>
+            {{/if}}
+            <dt>Network</dt>
+                <dd>{{show.network.name}} </dd>
+        </dl>
+      </main>
+  </body>
+</html>

@@ -1,0 +1,26 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Shows</title>
+  </head>
+  <body>
+      <main>
+        <h1> Search for a show</h1>
+        <form method = "POST" action="/search">
+          <label> Search for shows
+            <input type="text" name="search" autofocus placeholder="Search for a show"/>
+          </label>
+          <button type="submit">Search</button>
+        </form>
+          <a href="/">Go back to all shows</a>
+        <h1> Top show searches</h1>
+        <ol>
+            {{#each searches}}
+                <li><a >{{this.term}} was searched {{this.numSearches}} times</a ></li>
+            {{/each}}
+        </ol>
+      </main>
+  </body>
+</html>

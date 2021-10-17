@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Error</title>
+  </head>
+  <main>
+    <h1> Search for a show</h1>
+      <form method = "POST" action="/search">
+        <label> Search for shows
+          <input type="text" name="search" autofocus placeholder="Search for a show"/>
+        </label>
+        <button type="submit">Search</button>
+      </form>
+      <p>{{error}}</p>
+  </main>
+  <footer>
+    <a href="http://localhost:3000/" > Go back to home</a>
+    <a href="/popularsearches">See the most popular searches</a>
+  </footer>
+</html>

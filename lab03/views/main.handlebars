@@ -1,0 +1,41 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Shows</title>
+  </head>
+  <body>
+      <main>
+        <h1> Search for a show</h1>
+        <form method = "POST" action="/search">
+          <label> Search for shows
+            <input type="text" name="search" autofocus placeholder="Search for a show"/>
+          </label>
+          <button type="submit">Search</button>
+        </form>
+          {{#if search}}
+            <a href="/">Go back to all shows</a>
+            <h1> List of shows from search</h1>
+          {{else}}
+            <h1> List of all shows from tvmaze</h1>
+          {{/if}}
+          <a href="/popularsearches">See the most popular searches</a>
+        <ul>
+            {{#if search}}
+              {{#if shows.length}}
+                {{#each shows}}
+                  <li><a href="/show/{{this.show.id}}" aria-label="Show name">{{this.show.name}}</a></li>
+                {{/each}}
+              {{else}}
+              <li><a>No results found.</a></li>
+              {{/if}}
+            {{else}}
+              {{#each shows}}
+                <li><a href="/show/{{this.id}}" aria-label="Show name">{{this.name}}</a></li>
+              {{/each}}
+            {{/if}}
+        </ul>
+      </main>
+  </body>
+</html>

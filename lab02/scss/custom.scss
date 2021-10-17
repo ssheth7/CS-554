@@ -1,0 +1,98 @@
+@import "variables";
+@import "./src/styles/bootstrap/scss/bootstrap";
+
+/* That imports the entirety of bootstrap, taken from ../../node_modules/bootstrap/scss/bootstrap.scss
+ we can optimize it by only selectively including the modules we need:
+*/
+
+
+/* 
+ @import "functions";
+ @import "variables";
+ @import "mixins";
+ @import "root";
+ @import "reboot";
+ @import "type";
+ @import "images";
+ @import "code";
+ @import "grid";
+ @import "tables";
+ @import "forms";
+ @import "buttons";
+ @import "transitions";
+ @import "dropdown";
+ @import "button-group";
+ @import "input-group";
+ @import "custom-forms";
+ @import "nav";
+ @import "navbar";
+ @import "card";
+ @import "breadcrumb";
+ @import "pagination";
+ @import "badge";
+ @import "jumbotron";
+ @import "alert";
+ @import "progress";
+ @import "media";
+ @import "list-group";
+ @import "close";
+ @import "modal";
+ @import "tooltip";
+ @import "popover";
+ @import "carousel";
+ @import "utilities";
+ @import "print";
+
+ */
+
+.nav-link {
+    padding-left: 5%;
+    font-size: small;
+    a {
+        color: darkred;
+    }
+}
+
+.btn-primary {
+    background-color: darkred;
+    border-color: darkred;
+}
+
+.btn-secondary:hover {
+    background-color: darkred;
+    border-color: darkred;
+}
+
+@media (max-width: 1000px) {
+    .card {
+        width: 15rem;
+    }
+    h1 {
+        font-size: medium;
+    }
+}
+
+.card {
+    width: 18rem;
+}
+
+.card-body {
+    a:link {
+        color: darkred;
+    }
+}
+
+h1 {
+    padding-left: 30%;
+    color: darkred;
+    font-weight: 100;
+}
+
+h2 {
+    font-size: large;
+    font-weight: bold;
+}
+
+.navigation {
+    background-color: white;
+}
