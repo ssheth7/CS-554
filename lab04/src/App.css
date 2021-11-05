@@ -1,0 +1,160 @@
+.App {
+	text-align: center;
+}
+.center {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	width: 50%;
+}
+.App-logo {
+	height: 80px;
+}
+
+input {
+	border: 1px solid #178577;
+}
+.show-body {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	width: 50%;
+}
+
+.App-header {
+	background-color: #1e8678;
+	height: 100px;
+	padding: 20px;
+	color: #222;
+}
+
+.App-title {
+	font-size: 1.5em;
+	font-weight: bold;
+	color: white;
+}
+
+cite {
+	font-weight: bold;
+}
+table {
+	align-content: center;
+	margin: auto;
+}
+td {
+	padding: 10px;
+}
+
+.App-intro {
+	font-size: large;
+}
+.cap-first-letter:first-letter {
+	text-transform: capitalize;
+}
+.col-sm-6,
+col-md-4 {
+	border: 1px;
+}
+
+.hometext {
+	max-width: 60%;
+}
+.headerlink {
+	padding: 0.4rem 0.8rem;
+	background-color: white;
+	border-radius: 3px;
+	color: #178577;
+	text-decoration: none !important;
+	margin: 5px;
+}
+
+.headerlink:hover {
+	background-color: transparent;
+	color: white;
+	border: 2px solid white;
+}
+
+li {
+	padding: 5px;
+}
+
+p {
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+}
+
+div {
+	text-align: center;
+}
+
+a {
+	color: #178577;
+	text-decoration: none !important;
+}
+
+
+ul {
+	list-style: none;
+}
+
+.title {
+	font-weight: bold;
+	color: #178577;
+}
+
+
+dt,
+dl {
+	padding: 0px;
+	margin-top: 0px;
+	margin-bottom: 0px;
+}
+
+dt {
+	display: inline-block;
+}
+
+dd {
+	display: inline;
+	margin-left: 5px;
+}
+
+#react-paginate ul {
+	display: inline-block;
+	text-align: center;
+}
+  
+  #react-paginate li {
+	display: inline-block;
+}
+
+.pagination {
+	display: flex;
+	list-style: none;
+	cursor: pointer;
+}
+  
+.pagination a {
+	padding: 10px;
+	border-radius: 5px;
+	border: 1px solid #178577;
+	color: #178577;
+}
+  
+.pagination__link {
+	font-weight: bold;
+}
+  
+.pagination__link--active a {
+	color: #fff;
+	background: #178577;
+}
+  
+.pagination__link--disabled a {
+	pointer-events: none;
+	cursor: default;
+	color: rgb(198, 197, 202);
+	border: 1px solid rgb(198, 197, 202);
+	display: none;
+}

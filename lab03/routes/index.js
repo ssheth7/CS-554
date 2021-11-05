@@ -38,7 +38,7 @@ const constructorMethod = (app) => {
             }
 
             res.render('show', { show: show }, async(err, html) => {
-                await client.setAsync('id', html);
+                await client.setAsync(id, html);
                 res.send(html);
             });
         } catch (e) {
