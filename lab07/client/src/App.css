@@ -1,0 +1,52 @@
+.App {
+  text-align: center;
+}
+
+.center {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	width: 50%;
+}
+
+table {
+	align-content: center;
+	margin: auto;
+}
+
+.App-header {
+	background-color: #282c34;
+	height: 200px;
+		padding: 20px;
+	color: #222;
+	border-bottom: white;
+	margin-right: 0;
+}
+
+div {
+	text-align: center;
+}
+
+.App-title {
+	font-size: 1.5em;
+	font-weight: bold;
+	color: white;
+}
+
+.App-body {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+border: wheat;
+}
+.App-link {
+  color: #61dafb;
+}
+.headerlink {
+	padding: 0.4rem 0.8rem;
+	background-color: white;
+	border-radius: 3px;
+	color: #282c34;
+	text-decoration: none !important;
+	margin: 5px;
+}

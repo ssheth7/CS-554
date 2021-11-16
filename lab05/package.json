@@ -1,0 +1,20 @@
+{
+  "name": "cs-554-lab-05",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "Shivam Sheth 10435941",
+  "license": "ISC",
+  "dependencies": {
+    "apollo-server": "^3.4.0",
+    "axios": "^0.24.0",
+    "bluebird": "^3.7.2",
+    "dotenv": "^10.0.0",
+    "node-redis": "^0.1.7",
+    "redis": "^3.1.2",
+    "uuid": "^8.3.2"
+  }
+}
