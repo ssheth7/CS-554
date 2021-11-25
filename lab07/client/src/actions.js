@@ -18,8 +18,23 @@ const selectTrainer = (id) => (
     payload: { id }
   }
 );
+const addPokemon = (pokemonid) => (
+  {
+    type:'ADD_POKEMON',
+    payload: {pokemonid}
+  }
+);
+const deletePokemon = (pokemonid) => (
+  {
+    type:'DELETE_POKEMON',
+    payload: {pokemonid}
+  }
+);
+
 module.exports = {
   addTrainer,
   deleteTrainer,
-  selectTrainer
+  selectTrainer,
+  addPokemon,
+  deletePokemon
 };

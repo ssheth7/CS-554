@@ -1,111 +1,32 @@
 import { gql } from '@apollo/client';
 
-const GET_IMAGES = gql`
-  query($pageNum: Int) {
-    unsplashImages(pageNum: $pageNum) {
-      id
+const GET_LIST = gql`
+  query($pageNum: Int!) {
+    PokemonList(pageNum: $pageNum) {
+      name
       url
-      description
-      posterName
-      userPosted
-      binned
+      id
     }
   }
 `;
 
-const GET_BINNED = gql`
-  query {
-    binnedImages {
+const GET_POKEMON = gql`
+  query($id: ID!) {
+    Pokemon(id: $id) {
       id
-      url
-      description
-      posterName
-      userPosted
-      binned
-    }
-  }
-`;
-
-const GET_USERPOSTED = gql`
-  query {
-    userPostedImages {
-      id
-      url
-      description
-      posterName
-      userPosted
-      binned
-    }
-  }
-`;
-const ADD_IMAGE = gql`
-  mutation createImage(
-    $url: String!
-    $description: String
-    $posterName: String
-  ) {
-    uploadImage(
-      url: $url
-      description: $description
-      posterName: $posterName
-    ) {
-      id
-      url
-      description
-      posterName
-      userPosted
-      binned
-    }
-  }
-`;
-
-const EDIT_IMAGE = gql`
-  mutation changeImage(
-    $id: ID!
-    $url: String!
-    $description: String
-    $posterName: String
-    $userPosted: Boolean
-    $binned: Boolean
-    ) {
-    updateImage(
-      id: $id
-      url: $url
-      description: $description
-      posterName: $posterName
-      userPosted: $userPosted
-      binned: $binned
-      ) {
-        id
-        url
-        description
-        posterName
-        userPosted
-        binned
-    }
-  }
-`;
-
-const DELETE_IMAGE = gql`
-  mutation removeImage($id: ID!) {
-    deleteImage(id: $id) {
-      id
-      url
-      description
-      posterName
-      userPosted
-      binned
+      name
+      types
+      back_default
+      front_default
+      back_shiny
+      front_shiny
     }
   }
 `;
 
 let exported = {
-  GET_IMAGES,
-  GET_BINNED,
-  GET_USERPOSTED,
-  ADD_IMAGE,
-  EDIT_IMAGE,
-  DELETE_IMAGE
+  GET_LIST,
+  GET_POKEMON,
 };
 
 export default exported;
