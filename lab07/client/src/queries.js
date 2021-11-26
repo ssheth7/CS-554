@@ -6,6 +6,11 @@ const GET_LIST = gql`
       name
       url
       id
+      types
+      back_default
+      back_shiny
+      front_default
+      front_shiny
     }
   }
 `;

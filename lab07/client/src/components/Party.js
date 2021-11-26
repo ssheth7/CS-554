@@ -42,7 +42,7 @@ const Party = (props) => {
     const [data, setData] = useState(undefined);
     const getPokemon = useQuery(queries.GET_POKEMON).refetch;
 
-    useEffect(async() => {
+    useEffect(() => {
         let promisearr = [];
         async function fetchPokemon(id) {
             try {
@@ -96,11 +96,11 @@ const Party = (props) => {
         return <>{createCard}</>
     }
     else if (error) {
-        return <a>{error}</a>;
+        return <p>{error}</p>;
     } else { 
         return (
             <>
-                <a>loading...</a>
+                <p>loading...</p>
             </>
         )                
     }

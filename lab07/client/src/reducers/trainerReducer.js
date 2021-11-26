@@ -11,7 +11,6 @@ initialState.trainers[initialId] = {
 }
 
 let copyState = null;
-let pokemonIndex = 0;
 let currentTrainer = null;
 let id;
 
@@ -19,7 +18,7 @@ const trainerReducer = (state = initialState, action) => {
         const {type, payload} = action;
         switch (type) {
             case 'CREATE_TRAINER':
-                copyState = state;
+                copyState = {...state};
                 id = uuid();
                 copyState.trainers[id] = 
                     {
@@ -28,23 +27,23 @@ const trainerReducer = (state = initialState, action) => {
                     };
                 return copyState;
             case 'DELETE_TRAINER':
-                copyState = state;
+                copyState = {...state};
                 delete copyState.trainers[payload.id];
                 return copyState;
             case 'SELECT_TRAINER':
-                copyState = state;
+                copyState = {...state};
                 copyState.currentTrainer = payload.id;
                 copyState.currentParty = copyState.trainers[copyState.currentTrainer].pokemon;
                 return copyState;
             case 'ADD_POKEMON':
-                copyState = state;
+                copyState = {...state};
                 currentTrainer = copyState.trainers[copyState.currentTrainer];
                 currentTrainer.pokemon.push(payload.pokemonid);
                 return copyState;
             case 'DELETE_POKEMON':
-                copyState = state;
+                copyState = {...state};
                 currentTrainer = copyState.trainers[copyState.currentTrainer];
-                currentTrainer.pokemon = currentTrainer.pokemon.filter(id => id != payload.pokemonid);
+                currentTrainer.pokemon = currentTrainer.pokemon.filter(id => id !== payload.pokemonid);
                 copyState.currentParty = currentTrainer.pokemon; 
                 return copyState;    
             default:

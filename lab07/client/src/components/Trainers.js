@@ -1,42 +1,37 @@
 import {React, useState} from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import {Box, TextField  } from '@mui/material';
-import { Grid } from '@material-ui/core'
-import {LoadingButton} from '@mui/lab';
+import { Grid, Button } from '@material-ui/core'
 import actions from '../actions';
 import Party from './Party';
 
 import '../App.css';
 
+
 const Trainers = () =>  {
     const dispatch = useDispatch();
     const [formData, setFormData] = useState("");
-    const [submitLoading, setsubmitLoading] = useState(false);
-    const [change, setChange] = useState(false);
     const allState = useSelector((state) => state.trainerreducers);
     let trainerGrid = null;
 
 
     const handleChange = (e) => {
-        if (e.target.value) {
             setFormData(e.target.value);
-        }
     };
 
     const addTrainer = (e) => {
-        setsubmitLoading(true);
         e.preventDefault();
+        if (!formData.trim()) {
+            return alert("Please enter a valid trainer name");
+        }
         dispatch(actions.addTrainer(formData));
         setFormData("");
-        setsubmitLoading(false);
     };
     const deleteTrainer = (id) => {
         dispatch(actions.deleteTrainer(id));
-        setChange(!change);
     };
     const selectTrainer = (id) => {
         dispatch(actions.selectTrainer(id));
-        setChange(!change);
     };
 
 
@@ -49,34 +44,32 @@ const Trainers = () =>  {
                 selected = true;
             }
             return (
-                <Box >
+                <Box key ={key}>
                 <Grid 
                     container
                     justifyContent="center" 
                     alignItems="center"
                 >
                     <Grid item xs={3} key="Name">
-                        <a>Trainer: {trainer.name}</a>
+                        Trainer: {trainer.name}
                     </Grid>
                     <Grid item xs={2} key="select button">
-                        <LoadingButton
+                        <Button
                             onClick={() => {selectTrainer(key)}}
                             disabled={selected}
-                            loadingIndicator="Selected"
                             variant="outlined"
                             >
-                            Select Trainer
-                        </LoadingButton>      
+                            <a>Select Trainer</a>
+                        </Button>      
                     </Grid>
                     <Grid item xs={2} key="delete button">
-                        <LoadingButton
+                        <Button
                             onClick={() => {deleteTrainer(key)}}
                             disabled={selected}
-                            loadingIndicator="Delete"
                             variant="outlined"
                             >
-                                Delete
-                        </LoadingButton>      
+                                <a>Delete</a>
+                        </Button>      
                     </Grid>
                 </Grid>
             <Grid 
@@ -101,9 +94,9 @@ const Trainers = () =>  {
                     Enter a name
                 </TextField>
                 <br></br>
-                <LoadingButton type="submit" loadingIndicator="Loading..." variant="outlined" loading={submitLoading} margin="normal">
+                <Button type="submit" variant="outlined" margin="normal">
                     Add Trainer
-                </LoadingButton>
+                </Button>
                 { trainerGrid }
             </Box>
          </div>

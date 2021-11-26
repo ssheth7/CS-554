@@ -50,3 +50,11 @@ border: wheat;
 	text-decoration: none !important;
 	margin: 5px;
 }
+
+button:disabled {
+	background-color: red;
+}
+
+button:disabled a {
+	color: black;
+}

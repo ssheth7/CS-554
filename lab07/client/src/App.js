@@ -25,7 +25,7 @@ const App = () => {
             <h1 className="App-title">
               Pokemon App
             </h1>
-            <Link className="headerlink" to="/">
+            <Link className="headerlink" to="/" >
               Home
             </Link>
             <Link className="headerlink" to="/trainers">

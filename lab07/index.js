@@ -8,17 +8,12 @@ Promise.promisifyAll(redis.RedisClient.prototype);
 
 const typeDefs = gql`
   type Query {
-    PokemonList(pageNum: Int!) : [PokemonPage]
+    PokemonList(pageNum: Int!) : [Pokemon]
     Pokemon(id: ID!) : Pokemon
   } 
-
-  type PokemonPage {
-    name: String!
-    url: String!
-    id: Int!
-  }
   type Pokemon {
     id: ID!
+    url: String!
     name: String!
     types: [String]!
     back_default: String
@@ -38,13 +33,22 @@ const resolvers = {
         return JSON.parse(cachedResults);
       }
       let promises = [];
-      const {results} = (await axios.get(`https://pokeapi.co/api/v2/pokemon/?limit=50&offset=${page * 50}`)).data;
+      const {results} = (await axios.get(`https://pokeapi.co/api/v2/pokemon/?limit=25&offset=${page * 25}`)).data;
       for (let i = 0; i < results.length; i++) {
         promises[i] =  axios.get(results[i].url);
       }
-      let ids = await Promise.all(promises);
-      for (let i = 0; i < ids.length; i++) {
-        results[i].id = ids[i].data.id;
+      let pokemondata = await Promise.all(promises);
+      for (let i = 0; i < pokemondata.length; i++) {
+        results[i].id = pokemondata[i].data.id;
+        let types = [];
+        for (let j = 0; j < pokemondata[i].data.types.length; j++) {
+          types[j] = pokemondata[i].data.types[j].type.name;
+        }
+        results[i].back_default  = pokemondata[i].data.sprites.back_default
+        results[i].back_shiny    = pokemondata[i].data.sprites.back_shiny
+        results[i].front_default = pokemondata[i].data.sprites.front_default
+        results[i].front_shiny   = pokemondata[i].data.sprites.front_shiny
+        results[i].types = types;
       }
       client.setAsync(key, JSON.stringify(results));
       return results;

@@ -1,39 +1,34 @@
 import { useQuery } from '@apollo/client';
-import {React, useEffect, useState} from 'react';
+import { React } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import {Button} from '@material-ui/core';
 import actions from '../actions';
 import noImage from '../img/no_image.jpeg'
 import queries from '../queries'
-
+import '../App.css';
 
 const Pokemon = (props) => {
     const dispatch = useDispatch();
     const id = props.match.params.id;
     const allState = useSelector((state) => state.trainerreducers);
     const currentTrainer = allState.currentTrainer;
-    const [party, setParty] = useState(allState.currentParty);
+    const party = allState.currentParty;
     const {loading, error, data} = useQuery(queries.GET_POKEMON,
          {variables : { id: id}});
-    const [selected, setSelected] = useState(false);
-    
+    const selected = party && party.find(x => x === Number.parseInt(id));
+
     let buttonText = "Catch";
-    if (party && party.length == 6) {
+    if (party && party.length === 6) {
         buttonText = "Party is full";
     }
     if (selected) {
         buttonText = "Release";
     }
-    console.log(party);
     const addPokemon = () => {
         dispatch(actions.addPokemon(Number.parseInt(id)));
-        setSelected(true);
-        setParty(allState.currentParty);
     }
     const deletePokemon = () => {
         dispatch(actions.deletePokemon(Number.parseInt(id)));
-        setSelected(false);
-        setParty(allState.currentParty);
     }
     const typesList = data && data.Pokemon.types && data.Pokemon.types.map((type) => {
         return <ul key={type}>{type}</ul>
@@ -41,14 +36,6 @@ const Pokemon = (props) => {
 
     let buttonAction = selected ? deletePokemon : addPokemon;
     
-    useEffect(() => {
-        for (let i = 0; party && i < party.length; i++) {
-            if (party[i] == id) {
-                setSelected(true);
-            }
-        }
-    },[party])
-
     if (loading) {
         return <div>Loading...</div>
     } else if (error) {
@@ -62,22 +49,26 @@ const Pokemon = (props) => {
             </ul>
             <img
                 src={data.Pokemon.back_default ? data.Pokemon.back_default : noImage}
+                alt="Default Back View"
             />
             <img
                 src={data.Pokemon.front_default ? data.Pokemon.front_default : noImage}
+                alt="Default Front View"
             />
             <img
                 src={data.Pokemon.back_shiny ? data.Pokemon.back_shiny : noImage}
+                alt="Shiny Back View"
             />
             <img
                 src={data.Pokemon.front_shiny ? data.Pokemon.front_shiny : noImage}
+                alt="Shiny Front View"
             />
             <br></br>
             <Button 
             variant="outlined"
-            disabled={!currentTrainer || (!selected && party && party.length == 6)}
+            disabled={!currentTrainer || (!selected && party && party.length === 6)}
             onClick={() => {buttonAction()}}>
-                {buttonText}    
+                <a>{buttonText}</a>    
             </Button>
         </>;
     }
